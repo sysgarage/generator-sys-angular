@@ -24,7 +24,6 @@
   },
   "devDependencies": {
     "yeoman-assert": "^2.0.0",
-    "eslint-config-xo-space": "^0.7.0",
     "gulp": "^3.9.0",
     "gulp-exclude-gitignore": "^1.0.0",
     "gulp-istanbul": "^0.10.3",
