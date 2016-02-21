@@ -32,9 +32,5 @@ module.exports = yeoman.generators.Base.extend({
       this.templatePath('dummyfile.txt'),
       this.destinationPath('dummyfile.txt')
     );
-  },
-
-  install: function () {
-    this.installDependencies();
   }
 });
