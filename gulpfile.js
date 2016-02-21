@@ -13,7 +13,7 @@ gulp.task('nsp', function (cb) {
 });
 
 gulp.task('pre-test', function () {
-  return gulp.src(['generators/**/*.js', '!generators/**/templates/*.js'])
+  return gulp.src(['generators/**/*.js', '!generators/**/templates/*.js', 'utils/**/*.js'])
     .pipe(excludeGitignore())
     .pipe(istanbul({
       includeUntested: true
@@ -37,7 +37,9 @@ gulp.task('test', ['pre-test'], function (cb) {
 });
 
 gulp.task('watch', function () {
-  gulp.watch(['generators/**/*.js', '!generators/**/templates/*.js', 'test/**'], ['test']);
+  gulp.watch(['generators/**/*.js', '!generators/**/templates/*.js', 'utils/**/*.js', 'test/**'],
+    ['test']
+  );
 });
 
 gulp.task('coveralls', ['test'], function () {
