@@ -1,7 +1,7 @@
 'use strict';
 var yeoman = require('yeoman-generator');
 var _ = require('lodash');
-var filterModuleName = require('../../utils/filter-module-name');
+var filters = require('../../utils/filters.js');
 var convert = require('../../utils/convert.js');
 
 module.exports = yeoman.generators.Base.extend({
@@ -18,7 +18,7 @@ module.exports = yeoman.generators.Base.extend({
       name: 'moduleName',
       message: 'Enter the module name:',
       default: 'app.services',
-      filter: filterModuleName
+      filter: filters.moduleNameFilter
     }];
 
     this.prompt(prompts, function(props) {
