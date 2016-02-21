@@ -1,6 +1,7 @@
 'use strict';
 var yeoman = require('yeoman-generator');
 var _ = require('lodash');
+var filterModuleName = require('../../utils/filter-module-name');
 
 module.exports = yeoman.generators.Base.extend({
   prompting: function() {
@@ -39,14 +40,6 @@ module.exports = yeoman.generators.Base.extend({
     );
   }
 });
-
-function filterModuleName(moduleName) {
-  var moduleParts = moduleName.split('.');
-  for (var i = 0; i < moduleParts.length; i++) {
-    moduleParts[i] = _.camelCase(moduleParts[i]);
-  }
-  return _.join(moduleParts, '.');
-}
 
 function toFileName(name) {
   return _.kebabCase(name) + '.service.js';
