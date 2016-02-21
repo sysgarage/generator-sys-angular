@@ -27,6 +27,10 @@ module.exports = yeoman.generators.Base.extend({
     }.bind(this));
   },
 
+  configuring: function() {
+    this.config.save();
+  },
+
   writing: function () {
     this.fs.copy(
       this.templatePath('dummyfile.txt'),
