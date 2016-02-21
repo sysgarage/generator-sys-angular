@@ -31,21 +31,13 @@ module.exports = yeoman.generators.Base.extend({
     var destinationFolder = 'src/' + convert.moduleToFolder(this.props.moduleName);
     var context = {
       moduleName: this.props.moduleName,
-      serviceName: toServiceName(this.props.name)
+      serviceName: _.camelCase(this.props.name) + 'Service'
     };
 
     this.fs.copyTpl(
       this.templatePath('service.js'),
-      this.destinationPath(destinationFolder + toFileName(this.props.name)),
+      this.destinationPath(destinationFolder + _.kebabCase(this.props.name) + '.service.js'),
       context
     );
   }
 });
-
-function toFileName(name) {
-  return _.kebabCase(name) + '.service.js';
-}
-
-function toServiceName(name) {
-  return _.camelCase(name) + 'Service';
-}

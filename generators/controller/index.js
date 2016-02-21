@@ -31,22 +31,13 @@ module.exports = yeoman.generators.Base.extend({
     var destinationFolder = 'src/' + convert.moduleToFolder(this.props.moduleName);
     var context = {
       moduleName: this.props.moduleName,
-      controllerName: toControllerName(this.props.name)
+      controllerName: _.upperFirst(_.camelCase(this.props.name)) + 'Controller'
     };
 
     this.fs.copyTpl(
       this.templatePath('controller.js'),
-      this.destinationPath(destinationFolder + toFileName(this.props.name)),
+      this.destinationPath(destinationFolder + _.kebabCase(this.props.name) + '.controller.js'),
       context
     );
   }
 });
-
-function toFileName(name) {
-  return _.kebabCase(name) + '.controller.js';
-}
-
-function toControllerName(name) {
-  var controllerName = _.camelCase(name) + 'Controller';
-  return _.upperFirst(controllerName);
-}

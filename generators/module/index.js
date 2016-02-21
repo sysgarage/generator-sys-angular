@@ -30,13 +30,13 @@ module.exports = yeoman.generators.Base.extend({
 
     this.fs.copyTpl(
       this.templatePath('module.js'),
-      this.destinationPath(destinationFolder + toFileName(this.props.moduleName)),
+      this.destinationPath(destinationFolder + getFileName(this.props.moduleName)),
       context
     );
   }
 });
 
-function toFileName(moduleName) {
+function getFileName(moduleName) {
   var name = moduleName.split('.').pop();
   return _.kebabCase(name) + '.module.js';
 }
