@@ -32,12 +32,6 @@
     "gulp-nsp": "^2.1.0",
     "gulp-coveralls": "^0.1.0"
   },
-  "eslintConfig": {
-    "extends": "xo-space",
-    "env": {
-      "mocha": true
-    }
-  },
   "repository": "git@github.com:sysgarage/generator-sys-angular.git",
   "scripts": {
     "prepublish": "gulp prepublish",
