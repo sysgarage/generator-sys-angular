@@ -2,6 +2,7 @@
 var yeoman = require('yeoman-generator');
 var _ = require('lodash');
 var filterModuleName = require('../../utils/filter-module-name');
+var convert = require('../../utils/convert.js');
 
 module.exports = yeoman.generators.Base.extend({
   prompting: function() {
@@ -27,7 +28,7 @@ module.exports = yeoman.generators.Base.extend({
   },
 
   writing: function() {
-    var destinationFolder = 'src/' + toFolderPath(this.props.moduleName);
+    var destinationFolder = 'src/' + convert.moduleToFolder(this.props.moduleName);
     var context = {
       moduleName: this.props.moduleName,
       serviceName: toServiceName(this.props.name)
@@ -43,14 +44,6 @@ module.exports = yeoman.generators.Base.extend({
 
 function toFileName(name) {
   return _.kebabCase(name) + '.service.js';
-}
-
-function toFolderPath(moduleName) {
-  var moduleParts = moduleName.split('.');
-  for (var i = 0; i < moduleParts.length; i++) {
-    moduleParts[i] = _.kebabCase(moduleParts[i]);
-  }
-  return _.join(moduleParts, '/') + '/';
 }
 
 function toServiceName(name) {
