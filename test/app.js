@@ -13,7 +13,7 @@ describe('generator-sys-angular:app', function () {
 
   it('creates files', function () {
     assert.file([
-      'dummyfile.txt'
+      '.yo-rc.json'
     ]);
   });
 });
