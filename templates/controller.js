@@ -2,7 +2,7 @@
   'use strict';
 
   angular
-    .module('<%= moduleName %>')
+    .module('<%= module %>')
     .controller('<%= controllerName %>', <%= controllerName %>);
 
   /* @ngInject */

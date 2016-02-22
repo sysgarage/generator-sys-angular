@@ -20,7 +20,7 @@ module.exports = yeoman.generators.Base.extend({
       default: 'sys-default'
     }, {
       type: 'input',
-      name: 'moduleName',
+      name: 'module',
       message: 'Enter the module name:',
       default: 'app.directives.sysDefault',
       filter: filters.moduleNameFilter
@@ -33,10 +33,10 @@ module.exports = yeoman.generators.Base.extend({
   },
 
   writing: function() {
-    var folderName = convert.moduleToFolder(this.props.moduleName);
+    var folderName = convert.moduleToFolder(this.props.module);
     var destinationFolder = 'src/' + folderName;
     var context = {
-      moduleName: this.props.moduleName,
+      module: this.props.module,
       directiveName: _.camelCase(this.props.name),
       controllerName: _.upperFirst(_.camelCase(this.props.name)) + 'Controller',
       templateUrl: folderName + _.kebabCase(this.props.name) + '.directive.html'

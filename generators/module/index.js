@@ -15,7 +15,7 @@ module.exports = yeoman.generators.Base.extend({
 
     var prompts = [{
       type: 'input',
-      name: 'moduleName',
+      name: 'module',
       message: 'Enter the module name:',
       default: 'app.modules.default',
       filter: filters.moduleNameFilter
@@ -28,20 +28,20 @@ module.exports = yeoman.generators.Base.extend({
   },
 
   writing: function() {
-    var destinationFolder = 'src/' + convert.moduleToFolder(this.props.moduleName);
+    var destinationFolder = 'src/' + convert.moduleToFolder(this.props.module);
     var context = {
-      moduleName: this.props.moduleName
+      module: this.props.module
     };
 
     this.fs.copyTpl(
       this.templatePath('module.js'),
-      this.destinationPath(destinationFolder + getFileName(this.props.moduleName)),
+      this.destinationPath(destinationFolder + getFileName(this.props.module)),
       context
     );
   }
 });
 
-function getFileName(moduleName) {
-  var name = moduleName.split('.').pop();
+function getFileName(module) {
+  var name = module.split('.').pop();
   return _.kebabCase(name) + '.module.js';
 }
