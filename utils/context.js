@@ -10,7 +10,7 @@ function getDefaults(name, module) {
   var folderName = convert.moduleToFolder(module);
   return {
     module: module,
-    camelName: _.camelName(name),
+    camelName: _.camelCase(name),
     controller: _.upperFirst(_.camelCase(name)) + 'Controller',
     directive: _.camelCase(name),
     directiveUrl: folderName + _.kebabCase(name) + '.directive.html',
