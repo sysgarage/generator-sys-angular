@@ -3,10 +3,10 @@
 
   angular
     .module('<%= module %>')
-    .config(<%= routeName %>);
+    .config(<%= route %>);
 
   /* @ngInject */
-  function <%= routeName %>($stateProvider) {
+  function <%= route %>($stateProvider) {
     $stateProvider
       .state('<%= state %>', {
         url: '/<%= url %>',
