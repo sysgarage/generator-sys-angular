@@ -37,7 +37,7 @@ module.exports = yeoman.generators.Base.extend({
     var destinationFolder = 'src/' + folderName;
     var context = {
       module: this.props.module,
-      directiveName: _.camelCase(this.props.name),
+      directive: _.camelCase(this.props.name),
       controller: _.upperFirst(_.camelCase(this.props.name)) + 'Controller',
       templateUrl: folderName + _.kebabCase(this.props.name) + '.directive.html'
     };

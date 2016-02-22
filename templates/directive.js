@@ -3,10 +3,10 @@
 
   angular
     .module('<%= module %>')
-    .directive('<%= directiveName %>', <%= directiveName %>);
+    .directive('<%= directive %>', <%= directive %>);
 
   /* @ngInject */
-  function <%= directiveName %>() {
+  function <%= directive %>() {
     var directive = {
       restrict: 'EA',
       templateUrl: '<%= templateUrl %>',
