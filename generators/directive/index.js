@@ -23,7 +23,7 @@ module.exports = yeoman.generators.Base.extend({
       type: 'input',
       name: 'module',
       message: 'Enter the module name:',
-      default: 'app.directives.sysDefault',
+      default: getDefaultModule,
       filter: filters.moduleNameFilter
     }];
 
@@ -55,3 +55,7 @@ module.exports = yeoman.generators.Base.extend({
     );
   }
 });
+
+function getDefaultModule(props) {
+  return 'app.directives.' + _.camelCase(props.name);
+}
