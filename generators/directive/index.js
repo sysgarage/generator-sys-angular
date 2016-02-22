@@ -4,6 +4,7 @@ var _ = require('lodash');
 var path = require('path');
 var filters = require('../../utils/filters.js');
 var convert = require('../../utils/convert.js');
+var context = require('../../utils/context.js');
 
 module.exports = yeoman.generators.Base.extend({
   initializing: function() {
@@ -35,23 +36,17 @@ module.exports = yeoman.generators.Base.extend({
   writing: function() {
     var folderName = convert.moduleToFolder(this.props.module);
     var destinationFolder = 'src/' + folderName;
-    var context = {
-      module: this.props.module,
-      directive: _.camelCase(this.props.name),
-      controller: _.upperFirst(_.camelCase(this.props.name)) + 'Controller',
-      templateUrl: folderName + _.kebabCase(this.props.name) + '.directive.html'
-    };
 
     this.fs.copyTpl(
       this.templatePath('module.js'),
       this.destinationPath(destinationFolder + _.kebabCase(this.props.name) + '.module.js'),
-      context
+      context.getDefaults(this.props.name, this.props.module)
     );
 
     this.fs.copyTpl(
       this.templatePath('directive.js'),
       this.destinationPath(destinationFolder + _.kebabCase(this.props.name) + '.directive.js'),
-      context
+      context.getDefaults(this.props.name, this.props.module)
     );
 
     this.fs.copyTpl(

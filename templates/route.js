@@ -9,7 +9,7 @@
   function <%= route %>($stateProvider) {
     $stateProvider
       .state('<%= state %>', {
-        url: '/<%= url %>',
+        url: '/<%= kebabName %>',
         templateUrl: '<%= templateUrl %>',
         controller: '<%= controller %>',
         controllerAs: 'vm'

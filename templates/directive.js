@@ -9,7 +9,7 @@
   function <%= directive %>() {
     var directive = {
       restrict: 'EA',
-      templateUrl: '<%= templateUrl %>',
+      templateUrl: '<%= directiveUrl %>',
       scope: {},
       link: link,
       controller: <%= controller %>,

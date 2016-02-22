@@ -4,6 +4,7 @@ var _ = require('lodash');
 var path = require('path');
 var filters = require('../../utils/filters.js');
 var convert = require('../../utils/convert.js');
+var context = require('../../utils/context.js');
 
 module.exports = yeoman.generators.Base.extend({
   initializing: function() {
@@ -34,15 +35,11 @@ module.exports = yeoman.generators.Base.extend({
 
   writing: function() {
     var destinationFolder = 'src/' + convert.moduleToFolder(this.props.module);
-    var context = {
-      module: this.props.module,
-      controller: _.upperFirst(_.camelCase(this.props.name)) + 'Controller'
-    };
 
     this.fs.copyTpl(
       this.templatePath('controller.js'),
       this.destinationPath(destinationFolder + _.kebabCase(this.props.name) + '.controller.js'),
-      context
+      context.getDefaults(this.props.name, this.props.module)
     );
   }
 });
