@@ -36,7 +36,7 @@ module.exports = yeoman.generators.Base.extend({
     var destinationFolder = 'src/' + convert.moduleToFolder(this.props.module);
     var context = {
       module: this.props.module,
-      serviceName: _.camelCase(this.props.name) + 'Service'
+      service: _.camelCase(this.props.name) + 'Service'
     };
 
     this.fs.copyTpl(

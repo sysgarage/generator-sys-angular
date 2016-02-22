@@ -3,10 +3,10 @@
 
   angular
     .module('<%= module %>')
-    .factory('<%= serviceName %>', <%= serviceName %>);
+    .factory('<%= service %>', <%= service %>);
 
   /* @ngInject */
-  function <%= serviceName %>() {
+  function <%= service %>() {
     var service = {
       functionExample: functionExample
     };
