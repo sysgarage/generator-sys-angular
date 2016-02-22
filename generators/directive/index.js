@@ -1,10 +1,15 @@
 'use strict';
 var yeoman = require('yeoman-generator');
 var _ = require('lodash');
+var path = require('path');
 var filters = require('../../utils/filters.js');
 var convert = require('../../utils/convert.js');
 
 module.exports = yeoman.generators.Base.extend({
+  initializing: function() {
+    this.sourceRoot(path.resolve(__dirname, '../../templates'));
+  },
+
   prompting: function() {
     var done = this.async();
 
