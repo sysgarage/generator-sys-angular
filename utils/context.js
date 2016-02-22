@@ -8,7 +8,7 @@ var context = {
 
 function getDefaults(name, module) {
   var folderName = convert.moduleToFolder(module);
-  return {
+  return _.clone({
     module: module,
     camelName: _.camelCase(name),
     controller: _.upperFirst(_.camelCase(name)) + 'Controller',
@@ -19,7 +19,7 @@ function getDefaults(name, module) {
     service: _.camelCase(name) + 'Service',
     state: module.replace('app.modules.', ''),
     templateUrl: folderName + _.kebabCase(name) + '.html'
-  };
+  });
 }
 
 module.exports = context;
