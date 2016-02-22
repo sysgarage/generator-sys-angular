@@ -13,6 +13,7 @@ describe('generator-sys-angular:directive', function () {
 
   it('creates files', function () {
     assert.file([
+      'src/app/directives/sys-default/sys-default.module.js',
       'src/app/directives/sys-default/sys-default.directive.js',
       'src/app/directives/sys-default/sys-default.directive.jade'
     ]);

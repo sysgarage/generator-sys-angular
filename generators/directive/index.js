@@ -43,6 +43,12 @@ module.exports = yeoman.generators.Base.extend({
     };
 
     this.fs.copyTpl(
+      this.templatePath('module.js'),
+      this.destinationPath(destinationFolder + _.kebabCase(this.props.name) + '.module.js'),
+      context
+    );
+
+    this.fs.copyTpl(
       this.templatePath('directive.js'),
       this.destinationPath(destinationFolder + _.kebabCase(this.props.name) + '.directive.js'),
       context
