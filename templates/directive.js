@@ -12,7 +12,7 @@
       templateUrl: '<%= templateUrl %>',
       scope: {},
       link: link,
-      controller: <%= controllerName %>,
+      controller: <%= controller %>,
       controllerAs: 'vm',
       bindToController: true
     };
@@ -25,7 +25,7 @@
   }
 
   /* @ngInject */
-  function <%= controllerName %>() {
+  function <%= controller %>() {
     var vm = this;
   }
 })();

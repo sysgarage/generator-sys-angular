@@ -11,7 +11,7 @@
       .state('<%= state %>', {
         url: '/<%= url %>',
         templateUrl: '<%= templateUrl %>',
-        controller: '<%= controllerName %>',
+        controller: '<%= controller %>',
         controllerAs: 'vm'
       });
   }

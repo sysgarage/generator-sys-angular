@@ -3,10 +3,10 @@
 
   angular
     .module('<%= module %>')
-    .controller('<%= controllerName %>', <%= controllerName %>);
+    .controller('<%= controller %>', <%= controller %>);
 
   /* @ngInject */
-  function <%= controllerName %>() {
+  function <%= controller %>() {
     var vm = this;
 
     activate();
