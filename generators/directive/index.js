@@ -36,22 +36,29 @@ module.exports = yeoman.generators.Base.extend({
   writing: function() {
     var folderName = convert.moduleToFolder(this.props.module);
     var destinationFolder = 'src/' + folderName;
+    var directiveContext = context.getDefaults(this.props.name, this.props.module);
 
     this.fs.copyTpl(
       this.templatePath('module.js'),
       this.destinationPath(destinationFolder + _.kebabCase(this.props.name) + '.module.js'),
-      context.getDefaults(this.props.name, this.props.module)
+      directiveContext
     );
 
     this.fs.copyTpl(
       this.templatePath('directive.js'),
       this.destinationPath(destinationFolder + _.kebabCase(this.props.name) + '.directive.js'),
-      context.getDefaults(this.props.name, this.props.module)
+      directiveContext
     );
 
     this.fs.copyTpl(
       this.templatePath('directive.jade'),
       this.destinationPath(destinationFolder + _.kebabCase(this.props.name) + '.directive.jade')
+    );
+
+    this.fs.copyTpl(
+      this.templatePath('directive.scss'),
+      this.destinationPath(destinationFolder + _.kebabCase(this.props.name) + '.directive.scss'),
+      directiveContext
     );
   }
 });
