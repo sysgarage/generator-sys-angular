@@ -1,6 +1,6 @@
 {
   "name": "generator-sys-angular",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Yeoman generator for AngularJS - SysGarage",
   "homepage": "https://github.com/sysgarage/generator-sys-angular",
   "author": {
@@ -9,7 +9,9 @@
     "url": "http://sysgarage.com/"
   },
   "files": [
-    "generators"
+    "generators",
+    "templates",
+    "utils"
   ],
   "main": "generators/app/index.js",
   "keywords": [
