@@ -8,9 +8,13 @@
 
 ## Install
 
-Install `yo` and `generator-sys-angular`
+Install Yeoman
 
-`npm install -g yo generator-sys-angular`
+`npm install -g yo`
+
+Install generator
+
+`npm install -g generator-sys-angular`
 
 ## Usage
 

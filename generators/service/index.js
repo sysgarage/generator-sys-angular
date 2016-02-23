@@ -2,13 +2,13 @@
 var yeoman = require('yeoman-generator');
 var _ = require('lodash');
 var path = require('path');
-var filters = require('../../utils/filters.js');
-var convert = require('../../utils/convert.js');
-var context = require('../../utils/context.js');
+var filters = require(path.join(__dirname, '../../utils/filters.js'));
+var convert = require(path.join(__dirname, '../../utils/convert.js'));
+var context = require(path.join(__dirname, '../../utils/context.js'));
 
 module.exports = yeoman.generators.Base.extend({
   initializing: function() {
-    this.sourceRoot(path.resolve(__dirname, '../../templates'));
+    this.sourceRoot(path.join(__dirname, '../../templates'));
   },
 
   prompting: function() {
