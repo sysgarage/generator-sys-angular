@@ -1,6 +1,7 @@
 'use strict';
 var _ = require('lodash');
-var convert = require('./convert.js');
+var path = require('path');
+var convert = require(path.resolve(__dirname, './convert.js'));
 
 var context = {
   getDefaults: getDefaults
