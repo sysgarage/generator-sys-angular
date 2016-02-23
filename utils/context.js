@@ -15,6 +15,7 @@ function getDefaults(name, module) {
     directive: _.camelCase(name),
     directiveUrl: folderName + _.kebabCase(name) + '.directive.html',
     kebabName: _.kebabCase(name),
+    moduleClass: _.kebabCase(module),
     route: _.camelCase(name) + 'Route',
     service: _.camelCase(name) + 'Service',
     state: module.replace('app.modules.', ''),
