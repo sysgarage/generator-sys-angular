@@ -6,6 +6,7 @@ var filters = {
 };
 
 function moduleNameFilter(moduleName) {
+  moduleName = moduleName.replace(new RegExp('/', 'g'), '.');
   var moduleParts = moduleName.split('.');
   for (var i = 0; i < moduleParts.length; i++) {
     moduleParts[i] = _.camelCase(moduleParts[i]);
