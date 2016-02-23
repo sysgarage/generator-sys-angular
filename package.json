@@ -9,7 +9,9 @@
     "url": "http://sysgarage.com/"
   },
   "files": [
-    "generators"
+    "generators",
+    "templates",
+    "utils"
   ],
   "main": "generators/app/index.js",
   "keywords": [
