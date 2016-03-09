@@ -12,7 +12,7 @@ function getDefaults(name, module) {
   return _.clone({
     module: module,
     camelName: _.camelCase(name),
-    controller: _.upperFirst(_.camelCase(name)) + 'Controller',
+    controller: _getController(name, module),
     directive: _.camelCase(name),
     directiveUrl: folderName + _.kebabCase(name) + '.directive.html',
     kebabName: _.kebabCase(name),
@@ -22,6 +22,11 @@ function getDefaults(name, module) {
     state: module.replace('app.modules.', ''),
     templateUrl: folderName + _.kebabCase(name) + '.html'
   });
+}
+
+function _getController(name, module) {
+  module = module.replace(/app\..*?\./, '');
+  return _.upperFirst(_.camelCase(module)) + 'Controller';
 }
 
 module.exports = context;
