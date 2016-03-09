@@ -5,6 +5,7 @@ var path = require('path');
 var filters = require(path.join(__dirname, '../../utils/filters.js'));
 var convert = require(path.join(__dirname, '../../utils/convert.js'));
 var context = require(path.join(__dirname, '../../utils/context.js'));
+var updater = require(path.join(__dirname, '../../utils/updater.js'));
 
 module.exports = yeoman.generators.Base.extend({
   initializing: function() {
@@ -60,6 +61,8 @@ module.exports = yeoman.generators.Base.extend({
       this.destinationPath(destinationFolder + _.kebabCase(this.props.name) + '.directive.scss'),
       directiveContext
     );
+
+    updater.updateParentModule(this.props.module, this.destinationPath(destinationFolder));
   }
 });
 
