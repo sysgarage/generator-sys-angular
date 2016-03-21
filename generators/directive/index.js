@@ -38,6 +38,7 @@ module.exports = yeoman.generators.Base.extend({
     var folderName = convert.moduleToFolder(this.props.module);
     var destinationFolder = 'src/' + folderName;
     var directiveContext = context.getDefaults(this.props.name, this.props.module);
+    var styleExt = this.config.get('style') || 'scss';
 
     this.fs.copyTpl(
       this.templatePath('module.js'),
@@ -57,8 +58,8 @@ module.exports = yeoman.generators.Base.extend({
     );
 
     this.fs.copyTpl(
-      this.templatePath('directive.scss'),
-      this.destinationPath(destinationFolder + _.kebabCase(this.props.name) + '.directive.scss'),
+      this.templatePath('directive.css'),
+      this.destinationPath(destinationFolder + _.kebabCase(this.props.name) + '.directive.' + styleExt),
       directiveContext
     );
 

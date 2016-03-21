@@ -14,6 +14,7 @@ module.exports = yeoman.generators.Base.extend({
 
   prompting: function() {
     var done = this.async();
+    var styleExt = this.config.get('style') || 'scss';
 
     var prompts = [{
       type: 'input',
@@ -25,7 +26,7 @@ module.exports = yeoman.generators.Base.extend({
       type: 'checkbox',
       name: 'components',
       message: 'Select the components to be created:',
-      choices: Object.keys(getChoices()),
+      choices: Object.keys(getChoices(styleExt)),
       default: ['controller', 'route', 'view', 'style']
     }];
 
@@ -37,10 +38,11 @@ module.exports = yeoman.generators.Base.extend({
 
   writing: function() {
     var _this = this;
+    var styleExt = this.config.get('style') || 'scss';
     var moduleName = getModuleName(this.props.module);
     var destinationFolder = 'src/' + convert.moduleToFolder(this.props.module);
     var moduleContext = context.getDefaults(moduleName, this.props.module);
-    var choices = getChoices();
+    var choices = getChoices(styleExt);
 
     this.fs.copyTpl(
       this.templatePath('module.js'),
@@ -72,7 +74,7 @@ function getModuleName(module) {
   return _.camelCase(name);
 }
 
-function getChoices() {
+function getChoices(styleExt) {
   return {
     controller: {
       template: 'controller.js',
@@ -87,8 +89,8 @@ function getChoices() {
       destination: '.jade'
     },
     style: {
-      template: 'view.scss',
-      destination: '.scss'
+      template: 'view.css',
+      destination: '.' + styleExt
     },
     service: {
       template: 'service.js',
