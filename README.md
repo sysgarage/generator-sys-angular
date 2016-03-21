@@ -1,4 +1,5 @@
 [![Build Status](https://travis-ci.org/sysgarage/generator-sys-angular.svg?branch=master)](https://travis-ci.org/sysgarage/generator-sys-angular)
+[![npm version](https://badge.fury.io/js/generator-sys-angular.svg)](http://badge.fury.io/js/generator-sys-angular)
 
 # AngularJS generator
 
