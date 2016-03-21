@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/sysgarage/generator-sys-angular.svg?branch=master)](https://travis-ci.org/sysgarage/generator-sys-angular)
+
 # AngularJS generator
 
 > Yeoman generator for AngularJS projects by SysGarage
