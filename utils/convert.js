@@ -10,7 +10,7 @@ var convert = {
 
 function pathToModule(dir, entered) {
   var moduleName = _.camelCase(path.basename(dir));
-  var moduleFilename = moduleName + '.module.js';
+  var moduleFilename = path.basename(dir) + '.module.js';
   var moduleFilePath = path.resolve(dir, moduleFilename);
   var prefix;
   try {
