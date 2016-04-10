@@ -18,7 +18,7 @@ function getDefaults(name, module) {
     kebabName: _.kebabCase(name),
     moduleClass: _.kebabCase(module),
     route: _.camelCase(name) + 'Route',
-    service: _.camelCase(name) + 'Service',
+    service: _getService(name, module),
     state: module.replace('app.modules.', ''),
     templateUrl: folderName + _.kebabCase(name) + '.html'
   });
@@ -27,6 +27,14 @@ function getDefaults(name, module) {
 function _getController(name, module) {
   module = module.replace(/app\..*?\./, '');
   return _.upperFirst(_.camelCase(module)) + 'Controller';
+}
+
+function _getService(name, module) {
+  if (module === 'app.services') {
+    return _.camelCase(name) + 'Service';
+  }
+  module = module.replace(/app\..*?\./, '');
+  return _.camelCase(module) + 'Service';
 }
 
 module.exports = context;

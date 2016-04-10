@@ -8,6 +8,17 @@ var context = require(path.join(__dirname, '../../utils/context.js'));
 var updater = require(path.join(__dirname, '../../utils/updater.js'));
 
 module.exports = yeoman.generators.Base.extend({
+  constructor: function() {
+    yeoman.Base.apply(this, arguments);
+    this.argument('path', {
+      required: false
+    });
+
+    if (this.path) {
+      this.module = convert.pathToModule(this.path);
+    }
+  },
+
   initializing: function() {
     this.sourceRoot(path.join(__dirname, '../../templates'));
   },
@@ -16,22 +27,28 @@ module.exports = yeoman.generators.Base.extend({
     var done = this.async();
     var styleExt = this.config.get('style') || 'scss';
 
+    var defaultComponents = ['controller', 'route', 'view', 'style', 'service'];
+
     var prompts = [{
       type: 'input',
       name: 'module',
       message: 'Enter the module name:',
       default: 'app.modules.default',
-      filter: filters.moduleNameFilter
+      when: !this.module
     }, {
       type: 'checkbox',
       name: 'components',
       message: 'Select the components to be created:',
       choices: Object.keys(getChoices(styleExt)),
-      default: ['controller', 'route', 'view', 'style']
+      default: defaultComponents,
+      when: !this.module
     }];
 
     this.prompt(prompts, function(props) {
       this.props = props;
+      this.props.module = this.props.module || this.module;
+      this.props.components = this.props.components || defaultComponents;
+      this.props.module = filters.moduleNameFilter(this.props.module);
       done();
     }.bind(this));
   },
@@ -40,9 +57,15 @@ module.exports = yeoman.generators.Base.extend({
     var _this = this;
     var styleExt = this.config.get('style') || 'scss';
     var moduleName = getModuleName(this.props.module);
-    var destinationFolder = 'src/' + convert.moduleToFolder(this.props.module);
     var moduleContext = context.getDefaults(moduleName, this.props.module);
     var choices = getChoices(styleExt);
+
+    var destinationFolder;
+    if (this.path) {
+      destinationFolder = path.resolve(this.path) + '/';
+    } else {
+      destinationFolder = 'src/' + convert.moduleToFolder(this.props.module);
+    }
 
     this.fs.copyTpl(
       this.templatePath('module.js'),
