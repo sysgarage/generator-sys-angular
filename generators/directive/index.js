@@ -61,26 +61,28 @@ module.exports = yeoman.generators.Base.extend({
       destinationFolder = 'src/' + convert.moduleToFolder(this.props.module);
     }
 
+    var fileName = _.kebabCase(this.props.name).replace(/v-24/g, 'v24');
+
     this.fs.copyTpl(
       this.templatePath('module.js'),
-      this.destinationPath(destinationFolder + _.kebabCase(this.props.name) + '.module.js'),
+      this.destinationPath(destinationFolder + fileName + '.module.js'),
       directiveContext
     );
 
     this.fs.copyTpl(
       this.templatePath('directive.js'),
-      this.destinationPath(destinationFolder + _.kebabCase(this.props.name) + '.directive.js'),
+      this.destinationPath(destinationFolder + fileName + '.directive.js'),
       directiveContext
     );
 
     this.fs.copyTpl(
       this.templatePath('directive.jade'),
-      this.destinationPath(destinationFolder + _.kebabCase(this.props.name) + '.directive.jade')
+      this.destinationPath(destinationFolder + fileName + '.directive.jade')
     );
 
     this.fs.copyTpl(
       this.templatePath('directive.css'),
-      this.destinationPath(destinationFolder + _.kebabCase(this.props.name) + '.directive.' + styleExt),
+      this.destinationPath(destinationFolder + fileName + '.directive.' + styleExt),
       directiveContext
     );
 

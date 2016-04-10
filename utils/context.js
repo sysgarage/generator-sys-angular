@@ -9,7 +9,7 @@ var context = {
 
 function getDefaults(name, module) {
   var folderName = convert.moduleToFolder(module);
-  return _.clone({
+  var defaults =  _.clone({
     module: module,
     camelName: _.camelCase(name),
     controller: _getController(name, module),
@@ -22,6 +22,12 @@ function getDefaults(name, module) {
     state: module.replace('app.modules.', ''),
     templateUrl: folderName + _.kebabCase(name) + '.html'
   });
+  Object.keys(defaults).forEach(function(key) {
+    if (typeof defaults[key] === 'string') {
+      defaults[key] = defaults[key].replace(/v-24/g, 'v24');
+    }
+  });
+  return defaults;
 }
 
 function _getController(name, module) {

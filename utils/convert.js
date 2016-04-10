@@ -32,7 +32,8 @@ function moduleToFolder(moduleName) {
   for (var i = 0; i < moduleParts.length; i++) {
     moduleParts[i] = _.kebabCase(moduleParts[i]);
   }
-  return _.join(moduleParts, '/') + '/';
+  moduleParts = _.join(moduleParts, '/') + '/';
+  return moduleParts.replace(/v-24/g, 'v24');
 }
 
 module.exports = convert;
